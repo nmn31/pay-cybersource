@@ -1,0 +1,598 @@
+https://developer.cybersource.com/api-reference-assets/index.html?stage=pilot#webhooks
+
+https://developer.cybersource.com/docs/cybs/en-us/webhooks/implementation/all/rest/webhooks/wh-fg-subscription-manage-intro/wh-fg-subscription-manage-activate-intro.html
+
+https://gateway.rapidekops.us/webhook/webhook.php
+
+ https://apitest.cybersource.com/notification-subscriptions/v2/webhooks/1b395dce-076e-562d-e063-9e588e0accb2/ACTIVE
+
+
+
+
+{
+  "name": "CardProcessing Notification",
+  "description": "Sample Webhook from Developer Center",
+  "organizationId": "beautum_1718282746",
+  "productId": "cardProcessing",
+  "eventTypes": [
+    "payments.payments.accept",
+    "payments.payments.review",
+    "payments.payments.reject",
+    "payments.payments.partial.approval",
+    "payments.reversals.accept"
+  ],
+  "webhookUrl": "https://gateway.rapidekops.us/webhook/webhook.php",
+  "healthCheckUrl": "https://gateway.rapidekops.us/webhook/webhook.php",
+  "notificationScope": "SELF",
+  "retryPolicy": {
+    "algorithm": "ARITHMETIC",
+    "firstRetry": 1,
+    "interval": 1,
+    "numberOfRetries": 3,
+    "deactivateFlag": "false",
+    "repeatSequenceCount": 0,
+    "repeatSequenceWaitTime": 0
+  },
+  "securityPolicy": {
+    "securityType": "KEY",
+    "proxyType": "external"
+  }
+}
+
+{
+  "organizationId": "beautum_1718282746",
+  "productId": "cardProcessing",
+  "eventTypes": [
+    "payments.payments.accept",
+    "payments.payments.review",
+    "payments.payments.reject",
+    "payments.payments.partial.approval",
+    "payments.reversals.accept"
+  ],
+  "webhookId": "1b39946f-f4cb-7f8b-e063-9e588e0a009e",
+  "name": "CardProcessing Notification",
+  "webhookUrl": "https://gateway.rapidekops.us:443/webhook/webhook.php",
+  "healthCheckUrl": "https://gateway.rapidekops.us:443/webhook/webhook.php",
+  "createdOn": "2024-06-19T06:48:02.738Z",
+  "status": "INACTIVE",
+  "description": "Sample Webhook from Developer Center",
+  "retryPolicy": {
+    "algorithm": "ARITHMETIC",
+    "firstRetry": 1,
+    "interval": 1,
+    "numberOfRetries": 3,
+    "deactivateFlag": false,
+    "repeatSequenceCount": 0,
+    "repeatSequenceWaitTime": 0
+  },
+  "securityPolicy": {
+    "securityType": "KEY",
+    "proxyType": "external",
+    "digitalSignatureEnabled": "yes"
+  },
+  "version": "3",
+  "deliveryType": "nrtdCentral",
+  "notificationScope": "SELF"   	
+7187881352886820903954
+
+
+
+7186263072106149703954
+7186263072106149703954
+7186263072106149703954
+
+	
+7187921413746255003955
+}7187881352886820903954
+
+ "keyId": "1b2ad285-3784-0d36-e063-5a588d0ab374",
+ "key": "ttt27aoabK4nncUC1IVsEDudY8imTiVGJJOoqAsaqQU=",
+
+
+
+ "organizationId": "beautum_1718282746",
+    "keyId": "1b395232-83c4-220c-e063-5a588d0a6e25",
+    "key": "d2MEydm7dcKA1gQAP6jfPy9O56rMCiiFdpZpE5mwOjM=",
+
+-----------------------------------------------------------
+  
+  "productId": "fraudManagementEssentials",
+  "eventTypes": [
+    "risk.casemanagement.decision.accept",
+    "risk.casemanagement.addnote",
+    "risk.profile.decision.reject",
+    "risk.casemanagement.decision.reject",
+	"risk.profile.decision.monitor",
+	"risk.profile.decision.review"
+   ]
+   
+   
+   {
+  "organizationId": "beautum_1718282746",
+  "productId": "fraudManagementEssentials",
+  "eventTypes": [
+    "risk.casemanagement.decision.accept",
+    "risk.casemanagement.addnote",
+    "risk.profile.decision.reject",
+    "risk.casemanagement.decision.reject",
+    "risk.profile.decision.monitor",
+    "risk.profile.decision.review"
+  ],
+  "webhookId": "1b29e32d-f047-5b1d-e063-a5588d0a2996",
+  "name": "Notifications fraudManagementEssentials",
+  "webhookUrl": "https://gateway.rapidekops.us:443/webhook/webhook.php",
+  "createdOn": "2024-06-18T12:09:36.454Z",
+  "status": "INACTIVE",
+  "description": "Sample Webhook from Developer Center",
+  "retryPolicy": {
+    "algorithm": "ARITHMETIC",
+    "firstRetry": 1,
+    "interval": 1,
+    "numberOfRetries": 3,
+    "deactivateFlag": false,
+    "repeatSequenceCount": 0,
+    "repeatSequenceWaitTime": 0
+  },
+  "securityPolicy": {
+    "securityType": "KEY",
+    "proxyType": "external",
+    "digitalSignatureEnabled": "yes"
+  },
+  "version": "3",
+  "deliveryType": "nrtdCentral",
+  "notificationScope": "SELF"
+}
+   
+   ------------------------------------------------------------
+   
+   
+  ------------------------------------------------- 
+   
+    "productId": "decisionManager",
+  "eventTypes": [
+    "risk.casemanagement.decision.accept",
+    "risk.casemanagement.decision.reject",
+    "risk.profile.decision.reject",
+    "risk.casemanagement.addnote"
+    
+  ]
+   --------------------------------------------------
+         resonce
+   
+  {
+  "organizationId": "beautum_1718282746",
+  "productId": "decisionManager",
+  "eventTypes": [
+    "risk.casemanagement.decision.accept",
+    "risk.casemanagement.decision.reject",
+    "risk.profile.decision.reject",
+    "risk.casemanagement.addnote"
+  ],
+  "webhookId": "1b29e32d-f037-5b1d-e063-a5588d0a2996",
+  "name": "Notifications",
+  "webhookUrl": "https://gateway.rapidekops.us:443/webhook/webhook.php",
+  "createdOn": "2024-06-18T12:04:44.326Z",
+  "status": "INACTIVE",
+  "description": "Sample Webhook from Developer Center",
+  "retryPolicy": {
+    "algorithm": "ARITHMETIC",
+    "firstRetry": 1,
+    "interval": 1,
+    "numberOfRetries": 3,
+    "deactivateFlag": false,
+    "repeatSequenceCount": 0,
+    "repeatSequenceWaitTime": 0
+  },
+  "securityPolicy": {
+    "securityType": "KEY",
+    "proxyType": "external",
+    "digitalSignatureEnabled": "yes"
+  },
+  "version": "3",
+  "deliveryType": "nrtdCentral",
+  "notificationScope": "SELF"
+}
+-------------------responce if already exists--------------
+
+{
+  "statusCode": 400,
+  "errorCode": "Unique constraint violation",
+  "errorDescription": "Looks like this subscription already exist, Please try new subscription"
+}
+
+
+
+create a key id
+
+{
+  "submitTimeUtc": "2024-06-18T12:18:32Z",
+  "status": "SUCCESS",
+  "keyInformation": {
+    "provider": "nrtd",
+    "tenant": "beautum_1718282746",
+    "organizationId": "beautum_1718282746",
+    "keyId": "1b2a148d-6ef8-6df7-e063-5a588d0a2228",
+    "key": "qmm2Z5/nNeXEL4CKE+O/eT4zsrhT1JI8LZHbEPAwTEQ=",
+    "keyType": "sharedSecret",
+    "status": "active",
+    "expirationDate": "2027-06-18T12:18:32Z"
+  }
+}
+
+
+we can subscribe to these :-
+
+
+[
+  {
+    "productId": "tokenManagement",
+    "eventTypes": [
+      {
+        "eventName": "tms.token.created",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "tms.token.updated",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "tms.token.pan_updated",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "tms.networktoken.updated",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "tms.networktoken.provisioned",
+        "payloadEncryption": false
+      }
+    ]
+  },
+  {
+    "productId": "transactionSearch",
+    "eventTypes": []
+  },
+  {
+    "productId": "secureAcceptance",
+    "eventTypes": [
+      {
+        "eventName": "sa.order.confirmation",
+        "payloadEncryption": false
+      }
+    ]
+  },
+  {
+    "productId": "tax",
+    "eventTypes": []
+  },
+  {
+    "productId": "fraudManagementEssentials",
+    "eventTypes": [
+      {
+        "eventName": "risk.profile.decision.review",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.profile.decision.reject",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.profile.decision.monitor",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.casemanagement.addnote",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.casemanagement.decision.accept",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.casemanagement.decision.reject",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.profile.decision.review.5m",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.profile.decision.reject.5m",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.profile.decision.monitor.5m",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.profile.decision.review.5m",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.profile.decision.reject.5m",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "risk.profile.decision.monitor.5m",
+        "payloadEncryption": false
+      }
+    ]
+  },
+  {
+    "productId": "virtualTerminal",
+    "eventTypes": [
+      {
+        "eventName": "vt.order.receipt",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "vt.followon.receipt",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "vt.transactions.receipt",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "vt.order.receipt",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "vt.followon.receipt",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "vt.order.receipt",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "vt.followon.receipt",
+        "payloadEncryption": false
+      }
+    ]
+  },
+  {
+    "productId": "reporting",
+    "eventTypes": []
+  },
+  {
+    "productId": "cardProcessing",
+    "eventTypes": [
+      {
+        "eventName": "payments.payments.accept",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.payments.review",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.payments.reject",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.payments.partial.approval",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.reversals.accept",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.reversals.reject",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.captures.accept",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.captures.review",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.captures.reject",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.refunds.accept",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.refunds.reject",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.refunds.partial.approval",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.credits.accept",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.credits.review",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.credits.reject",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.credits.partial.approval",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.voids.accept",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "payments.voids.reject",
+        "payloadEncryption": false
+      }
+    ]
+  },
+  {
+    "productId": "accountUpdater",
+    "eventTypes": [
+      {
+        "eventName": "aura.batch.status.update",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "aura.batch.status.update",
+        "payloadEncryption": false
+      }
+    ]
+  },
+  {
+    "productId": "recurringBilling",
+    "eventTypes": [
+      {
+        "eventName": "rbs.subscriptions.charge.pre-notified",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "rbs.subscriptions.charge.created",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "rbs.subscriptions.charge.failed",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "rbs.subscriptions.charge.pre-notified",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "rbs.subscriptions.charge.created",
+        "payloadEncryption": false
+      },
+      {
+        "eventName": "rbs.subscriptions.charge.failed",
+        "payloadEncryption": false
+      }
+    ]
+  },
+  {
+    "productId": "paymentOrchestration",
+    "eventTypes": []
+  },
+  {
+    "productId": "payerAuthentication",
+    "eventTypes": []
+  }
+]
+
+
+
+{
+  "name": "Card Processing Hook",
+  "description": "Notifications for card ",
+  "organizationId": "beautum_1718282746",
+  "productId": "cardProcessing",
+   "eventTypes": [
+       "payments.payments.accept",
+       "payments.payments.reject",
+       "payments.payments.partial.approval",
+       "payments.reversals.accept",
+       "payments.reversals.reject",
+       "payments.captures.accept",
+       "payments.captures.review",
+       "payments.captures.reject",
+       "payments.refunds.accept",
+       "payments.refunds.reject",
+       "payments.refunds.partial.approval",
+       "payloadEncryption": false
+       "payments.credits.accept",
+       "payments.credits.review",
+       "payments.credits.reject",
+       "payments.credits.partial.approval",
+       "payments.voids.accept",
+       "payments.voids.reject"
+    ],
+  "webhookUrl": "https://gateway.rapidekops.us/webhook/webhook.php",
+  "healthCheckUrl": "https://gateway.rapidekops.us/webhook/webhook.php",
+  "notificationScope": "SELF",
+  "retryPolicy": {
+    "algorithm": "ARITHMETIC",
+    "firstRetry": 1,
+    "interval": 1,
+    "numberOfRetries": 3,
+    "deactivateFlag": "false",
+    "repeatSequenceCount": 0,
+    "repeatSequenceWaitTime": 0
+  },
+  "securityPolicy": {
+    "securityType": "KEY",
+    "proxyType": "external",
+    "config": {
+      "additionalConfig": {
+        "keyId": "1b2ad285-3784-0d36-e063-5a588d0ab374"
+      }
+    }
+  }
+}
+
+
+
+
+{
+  "organizationId": "beautum_1718282746",
+  "productId": "fraudManagementEssentials",
+  "eventTypes": [
+    "risk.casemanagement.decision.accept"
+  ],
+  "webhookId": "1b395dce-076e-562d-e063-9e588e0accb2",
+  "name": "fraudManagementEssentials",
+  "webhookUrl": "https://gateway.rapidekops.us:443/webhook/webhook.php",
+  "healthCheckUrl": "https://gateway.rapidekops.us:443/webhook/webhook.php",
+  "createdOn": "2024-06-19T06:32:46.152Z",
+  "status": "INACTIVE",
+  "description": "Sample Webhook from Developer Center",
+  "retryPolicy": {
+    "algorithm": "ARITHMETIC",
+    "firstRetry": 1,
+    "interval": 1,
+    "numberOfRetries": 3,
+    "deactivateFlag": false,
+    "repeatSequenceCount": 0,
+    "repeatSequenceWaitTime": 0
+  },
+  "securityPolicy": {
+    "securityType": "KEY",
+    "proxyType": "external",
+    "digitalSignatureEnabled": "yes"
+  },
+  "version": "3",
+  "deliveryType": "nrtdCentral",
+  "notificationScope": "SELF"
+}
+
+{
+  "organizationId": "beautum_1718282746",
+  "productId": "cardProcessing",
+  "eventTypes": [
+      "payments.payments.accept",
+       "payments.payments.reject",
+       "payments.payments.partial.approval",
+       "payments.reversals.accept",
+       "payments.reversals.reject",
+       "payments.captures.accept",
+       "payments.captures.review",
+       "payments.captures.reject",
+       "payments.refunds.accept",
+       "payments.refunds.reject",
+       "payments.refunds.partial.approval",
+       "payments.credits.accept",
+       "payments.credits.review",
+       "payments.credits.reject",
+       "payments.credits.partial.approval",
+       "payments.voids.accept",
+       "payments.voids.reject"
+  ],
+    "payloads":true,
+   "webhookUrl": "https://gateway.rapidekops.us/webhook/webhook.php",
+   "healthCheckUrl": "https://gateway.rapidekops.us/webhook/webhook.php"
+}

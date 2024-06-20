@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce CyberSource Payment Gateway
 Description: CyberSource Payment Gateway integration for WooCommerce.
 Version: 1.0.0
-Author: Your Name
+Author: Shammy Chandel
 */
 
 if (!defined('ABSPATH')) {
@@ -18,6 +18,20 @@ add_filter('woocommerce_payment_gateways', 'add_cybersource_gateway');
 function add_cybersource_gateway($gateways) {
     $gateways[] = 'WC_CyberSource';
     return $gateways;
+}
+
+add_filter('woocommerce_thankyou_order_received_text', 'custom_thankyou_order_received_text', 10, 2);
+
+function custom_thankyou_order_received_text($text, $order) {
+    // Customize the message here
+	$order_status = $order->get_status();
+	
+	$new_text = 'Thank you! Your order (#' . $order->get_order_number() . ') has been successfully received.';
+
+	if($order_status == "pending"){
+		$new_text = '<span =class = "warning danger">Your Payment is under review (#' . $order->get_order_number() . ').</span>';
+	}
+    return $new_text;
 }
 
 // Initialize the plugin
@@ -52,14 +66,6 @@ function init_cybersource_gateway() {
 			
 			
 			$cyber_options = get_option('woocommerce_cybersource_settings');
-			if(isset($cyber_options["enabled"]) && $cyber_options["enabled"] == "yes" ){
-				
-				//echo "<pre>";
-			    //print_r( get_option('woocommerce_cybersource_settings'));
-				
-				
-			}
-			
 			//exit;
             
 
@@ -150,6 +156,7 @@ function init_cybersource_gateway() {
         }
 
         // Process payment
+		
         public function process_payment($order_id) {
 			
 
@@ -170,28 +177,57 @@ function init_cybersource_gateway() {
 				$payment_result = cybersource_process_payment($order);
 
 				if ($payment_result['success']) {
+					
+					$data = $payment_result['cyber_response'];
+					$payment_id = $data->id;
+					$submitTimeUtc = $data->submitTimeUtc;
+					$reconciliationId = $data->reconciliationId;
+					$clientReferenceInformation = $data->clientReferenceInformation->code;
+					$orderInformation = $data->orderInformation->amountDetails->authorizedAmount.''.$data->orderInformation->amountDetails->currency;
+					$pointOfSaleInformation = $data->pointOfSaleInformation->terminalId;
+					
+					$order->add_order_note( 'payment_id:- '.$payment_id , 'Cybersource' );
+					$order->add_order_note( 'submitTimeUtc:- '.$submitTimeUtc , 'Cybersource' );
+					$order->add_order_note( 'reconciliationId:- '.$reconciliationId , 'Cybersource' );
+					$order->add_order_note( 'pointOfSaleInformation:- '.$pointOfSaleInformation , 'Cybersource' );
+					$order->add_order_note( 'orderInformation:- '.$orderInformation , 'Cybersource' );
+					
+					if(isset($payment_result['AUTHORIZED_PENDING_REVIEW'])){
+						
+						
+
+						$order->add_order_note( 'AUTHORIZED_PENDING_REVIEW', 'Cybersource' );
+					    $order->add_order_note(json_encode($payment_result['cyber_response']));
+						wc_add_notice(__('Payment error: ', 'woocommerce') . json_encode($payment_result), 'error');
+						return array(
+						'result' => 'success',
+						"message"=>"Your payment is under review",
+						'redirect' => $this->get_return_url($order),
+					    );
+					}
 					// Mark the order as paid
+					
 					$order->payment_complete();
 					// Reduce stock levels
 					$order->reduce_order_stock();
 					// Redirect to thank you page
-					$order->add_order_note( 'IPN payment completed Cybersource', 'Cybersource' );
-					$order->add_order_note(json_encode($payment_result['cyber_response']));
+					$order->add_order_note( 'IPN payment AUTHORIZED', 'Cybersource' );
+					//$order->add_order_note(json_encode($payment_result['cyber_response']));
 					return array(
 						'result' => 'success',
 						'redirect' => $this->get_return_url($order),
 					);
 				} else {
 					// Payment failed, display error message
-					wc_add_notice(__('Payment error: ', 'woocommerce') . $payment_result['message'], 'error');
+					wc_add_notice(__('Payment error: ', 'woocommerce') . json_encode($payment_result), 'error');
 					return;
 				}
 				
 				
 			}
-
-            
-        }
+		}
     }
+	
+	
 }
 

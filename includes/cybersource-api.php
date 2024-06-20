@@ -4,15 +4,18 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'cybersource/Resources/ExternalConf
 
 function SimpleAuthorizationInternet($flag ,$order )
 {
-    if (isset($flag) && $flag == "true") {
+
+	
+	
+	if (isset($flag) && $flag == "true") {
         $capture = true;
     } else {
         $capture = false;
     }
 	
-						if ($_POST['payment_method'] !== 'cybersource') {
-						return;
-					}
+	if ($_POST['payment_method'] !== 'cybersource') {
+	return;
+}
 
 	// Validate credit card details
 	$card_number = isset($_POST['cybersource_card_number']) ? sanitize_text_field($_POST['cybersource_card_number']) : '';
@@ -30,11 +33,11 @@ function SimpleAuthorizationInternet($flag ,$order )
 	}
 
 	if (empty($expiry_year) || !is_numeric($expiry_year) || strlen($expiry_year) !== 4) {
-		wc_add_notice(__('Please enter a valid expiry year (YYYY).', 'your-textdomain'), 'error');
+		return wc_add_notice(__('Please enter a valid expiry year (YYYY).', 'your-textdomain'), 'error');
 	}
 
 	if (empty($cvv) || !is_numeric($cvv)) {
-		wc_add_notice(__('Please enter a valid CVV number.', 'your-textdomain'), 'error');
+		return wc_add_notice(__('Please enter a valid CVV number.', 'your-textdomain'), 'error');
 	}
 
 	$order_total = $order->get_total();
@@ -53,7 +56,7 @@ function SimpleAuthorizationInternet($flag ,$order )
 	$billing_phone = $order->get_billing_phone();
     
 	$clientReferenceInformationArr = [
-            "code" => "TC50171_3"
+            "code" => "TC50171_".$order->get_id()
     ];
     $clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
@@ -76,7 +79,7 @@ function SimpleAuthorizationInternet($flag ,$order )
 
     $orderInformationAmountDetailsArr = [
             "totalAmount" => $order_total,
-            "currency" => "USD"
+            "currency" => get_woocommerce_currency()
     ];
     $orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
@@ -85,7 +88,7 @@ function SimpleAuthorizationInternet($flag ,$order )
             "lastName" => $billing_last_name,
             "address1" => $billing_address_1,
             "locality" => $billing_address_2,
-            "administrativeArea" => $billing_company,
+            "administrativeArea" => $billing_state,
             "postalCode" => $billing_postcode,
             "country" => $billing_country,
             "email" => $billing_email,
@@ -115,11 +118,30 @@ function SimpleAuthorizationInternet($flag ,$order )
     $api_client = new CyberSource\ApiClient($config, $merchantConfig);
     $api_instance = new CyberSource\Api\PaymentsApi($api_client);
 
+
     try {
         $apiResponse = $api_instance->createPayment($requestObj);
        
         $data = json_decode(WriteLogAudit($apiResponse[0]));
 		$status = $data->status;
+		
+		
+		if ($data->status == "AUTHORIZED_PENDING_REVIEW"){
+			
+
+			$payment_result = array(
+					'success' => true, // Replace with actual API response handling
+					'message' => 'Payment is under Review.', // Replace with actual error handling
+					'cyber_response'=>$data,
+					'AUTHORIZED_PENDING_REVIEW'=>"Payment is under Review",
+				);
+
+			return $payment_result;
+			
+		}
+		
+		
+		
 		if ($data->status =="AUTHORIZED"){
 			
 			
